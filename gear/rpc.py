@@ -177,7 +177,7 @@ def eth_sendTransaction(transaction):
     '''
     logger.info('eth_sendTransaction')
     formatted_transaction = input_transaction_formatter(transaction)
-    return thor.send_transaction(formatted_transaction, transaction["from_key"])
+    return thor.send_transaction(formatted_transaction)
 
 @dispatcher.add_method
 def eth_signTransaction(transaction):
@@ -186,7 +186,7 @@ def eth_signTransaction(transaction):
     '''
     logger.info('eth_signTransaction')
     formatted_transaction = input_transaction_formatter(transaction)
-    return thor.sign_transaction(formatted_transaction, transaction["fromKey"])
+    return thor.sign_transaction(formatted_transaction, transaction["from_key"])
 
 @dispatcher.add_method
 def eth_getBalance(address, block_identifier="best"):
