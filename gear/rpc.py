@@ -179,6 +179,14 @@ def eth_sendTransaction(transaction):
     formatted_transaction = input_transaction_formatter(transaction)
     return thor.send_transaction(formatted_transaction)
 
+@dispatcher.add_method
+def eth_signTransaction(transaction):
+    '''
+    交易签名
+    '''
+    logger.info('eth_signTransaction')
+    formatted_transaction = input_transaction_formatter(transaction)
+    return thor.sign_transaction(formatted_transaction, transaction["fromKey"])
 
 @dispatcher.add_method
 def eth_getBalance(address, block_identifier="best"):
