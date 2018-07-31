@@ -177,7 +177,7 @@ def eth_sendTransaction(transaction):
     '''
     logger.info('eth_sendTransaction')
     formatted_transaction = input_transaction_formatter(transaction)
-    return thor.send_transaction(formatted_transaction)
+    return thor.send_transaction(formatted_transaction, transaction["from_key"])
 
 @dispatcher.add_method
 def eth_signTransaction(transaction):

@@ -89,9 +89,9 @@ class ThorClient(object, metaclass=Singleton):
         result = self.transactions.make_request(post, data=data)
         return None if result is None else result["id"]
 
-    def sign_transaction(self, transaction, fromKey):
+    def sign_transaction(self, transaction, from_key):
         tx = ThorTransaction(self, transaction)
-        tx.sign(fromKey)
+        tx.sign(from_key)
         return "0x{}".format(encode_hex(rlp.encode(tx)))
 
     def get_transaction_by_hash(self, tx_hash):
